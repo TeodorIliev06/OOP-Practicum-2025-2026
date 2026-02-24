@@ -218,6 +218,69 @@ void bubbleSort(std::vector<T>& vector, Comparator comparator) {
 	}
 }
 
+struct Point {
+	int x;
+	int y;
+
+	void print() {
+		std::cout << '(' << this->x << ';' << this->y << ')';
+	}
+
+	double calculateDistanceFromCenter() {
+		return calculateDistance(0, 0);
+	}
+
+	double calculateDistance(int secondX, int secondY) {
+		return (double)sqrt(pow((this->x - secondX), 2) + pow((this->y - secondY), 2));
+	}
+
+	int getQuadrant(Point point) {
+		if (point.x > 0)
+		{
+			if (point.y > 0)
+			{
+				return 1;
+			}
+			else if (point.y < 0)
+			{
+				return 4;
+			}
+			else 
+			{
+				return 0;
+			}	
+		}
+		else if (point.x < 0)
+		{
+			if (point.y > 0)
+			{
+				return 2;
+			}
+			else if (point.y < 0)
+			{
+				return 3;
+			}
+			else
+			{
+				return 0;
+			}
+		}
+		else
+		{
+			return 0;
+		}
+	}
+
+	bool isInsideCircle(Point point, int radius) {
+		if (pow(point.x, 2) + pow(point.y, 2) <= pow(radius, 2))
+		{
+			return true;
+		}
+
+		return false;
+	}
+};
+
 int main()
 {
 	// 1
