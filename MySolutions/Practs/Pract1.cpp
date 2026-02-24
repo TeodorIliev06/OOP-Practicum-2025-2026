@@ -1,4 +1,6 @@
 #include <iostream>
+#include<vector>
+#include<string>
 
 struct ComplexNum {
 	int real;
@@ -69,13 +71,71 @@ struct ComplexNum {
 	}
 };
 
+struct Triangle {
+	int a, b, c;
+
+	int getPerimeter() {
+		return this->a + this->b + this->c;
+	}
+
+	int getArea() {
+		int halfPerimeter = getPerimeter() / 2;
+
+		return (int)round(sqrt(halfPerimeter * (halfPerimeter - a) * (halfPerimeter - b) * (halfPerimeter - c)));
+	}
+};
+
+template <typename T, typename Comparator>
+void bubbleSort(std::vector<T>& vector, Comparator comparator) {
+
+	for (size_t i = 0; i < vector.size(); i++)
+	{
+		bool flag = false;
+		for (size_t j = 0; j < vector.size() - i - 1; j++)
+		{
+			if (comparator(vector[j] < vector[j + 1]))
+			{
+				std::swap(vector[j], vector[j+1]);
+				flag = true;
+			}
+		}
+
+		if (!flag)
+		{
+			break;
+		}
+	}
+}
+
 int main()
 {
-	ComplexNum test1 = { 1, 1 };
-	ComplexNum test2 = { 2, 2 };
+	// 1
+	//ComplexNum test1 = { 1, 1 };
+	//ComplexNum test2 = { 2, 2 };
 
 	//test1.print();
 	//test1.sum(test2).print();
 	//test1.multiply(test2).print();
-	test1.divide(test2).print();
+	//test1.divide(test2).print();
+
+	// 2
+	int count;
+	std::cin >> count;
+
+	std::vector<int> areas;
+	for (size_t i = 0; i < count; i++)
+	{
+		int a, b, c;
+		std::cin >> a >> b >> c;
+
+		Triangle triangle = { a, b, c };
+		areas.push_back(triangle.getArea());
+	}
+
+	bubbleSort(areas, [](int a, int b) {
+		return a < b;}
+	);
+
+	// 3
+
 }
