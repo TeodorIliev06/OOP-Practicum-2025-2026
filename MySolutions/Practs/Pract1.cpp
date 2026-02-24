@@ -85,6 +85,117 @@ struct Triangle {
 	}
 };
 
+enum class Major {
+	SE,
+	IS,
+	CS,
+	AM,
+	M,
+	I
+};
+
+Major parseMajor(const std::string& majorString) 
+{
+	if (majorString == "SE") return Major::SE;
+	else if (majorString == "IS") return Major::IS;
+	else if (majorString == "CS") return Major::CS;
+	else if (majorString == "AM") return Major::AM;
+	else if (majorString == "M") return Major::M;
+	else if (majorString == "I") return Major::I;
+	else /* TODO throw an error*/  return;
+}
+
+struct Student {
+	std::string facultyNum;
+	std::string name;
+	double grade;
+	Major major;
+};
+
+struct Group {
+	std::vector<Student> students;
+	double averageGrade;
+};
+
+Group createGroup(Group group) {
+	int count;
+	std::cin >> count;
+
+	Group group;
+	for (size_t i = 0; i < count; i++)
+	{
+		Student student;
+		std::string majorString;
+		std::cin >> student.facultyNum >> student.name >> student.grade >> majorString;
+
+		student.major = parseMajor(majorString);
+
+		group.students.push_back(student);
+	}
+
+	double gradesSum = 0;
+	for (size_t i = 0; i < group.students.size(); i++)
+	{
+		gradesSum += group.students[i].grade;
+	}
+
+	group.averageGrade = gradesSum / group.students.size();
+}
+
+int getScholarshipsCount(Group group, int minGrade) {
+	int scholarshipsCount = 0;
+	for (size_t i = 0; i < group.students.size(); i++)
+	{
+		if (group.students[i].grade >= minGrade)
+		{
+			scholarshipsCount++;
+		}
+	}
+
+	return scholarshipsCount;
+}
+
+std::vector<Student> getEligibleStudents(Group group, int minGrade) {
+	std::vector<Student> eligibleStudents;
+	for (size_t i = 0; i < group.students.size(); i++)
+	{
+		if (group.students[i].grade >= minGrade)
+		{
+			eligibleStudents.push_back(group.students[i]);
+		}
+	}
+
+	bubbleSort(group.students, [](const Student& first, const Student& second) {
+		return first.facultyNum < second.facultyNum;
+	});
+}
+
+bool findStudent(Group group, std::string& facultyNumber) {
+	int left = 0;
+	int right = group.students.size() - 1;
+
+	while (left <= right)
+	{
+		int mid = left + (right - left) / 2;
+		const Student& currentStudent = group.students[mid];
+
+		if (currentStudent.facultyNum == facultyNumber)
+		{
+			return true;
+		}
+		else if (currentStudent.facultyNum > facultyNumber)
+		{
+			right = mid - 1;
+		}
+		else
+		{
+			left = mid + 1;
+		}
+	}
+
+	return false;
+}
+
 template <typename T, typename Comparator>
 void bubbleSort(std::vector<T>& vector, Comparator comparator) {
 
@@ -119,7 +230,7 @@ int main()
 	//test1.divide(test2).print();
 
 	// 2
-	int count;
+	/*int count;
 	std::cin >> count;
 
 	std::vector<int> areas;
@@ -134,8 +245,8 @@ int main()
 
 	bubbleSort(areas, [](int a, int b) {
 		return a < b;}
-	);
+	);*/
 
 	// 3
-
+	//Group group = createGroup()
 }
