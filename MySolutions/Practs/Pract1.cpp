@@ -102,7 +102,29 @@ Major parseMajor(const std::string& majorString)
 	else if (majorString == "AM") return Major::AM;
 	else if (majorString == "M") return Major::M;
 	else if (majorString == "I") return Major::I;
-	else /* TODO throw an error*/  return;
+	 /* TODO throw an error*/
+}
+
+template <typename T, typename Comparator>
+void bubbleSort(std::vector<T>& vector, Comparator comparator) {
+
+	for (size_t i = 0; i < vector.size(); i++)
+	{
+		bool flag = false;
+		for (size_t j = 0; j < vector.size() - i - 1; j++)
+		{
+			if (comparator(vector[j], vector[j + 1]))
+			{
+				std::swap(vector[j], vector[j + 1]);
+				flag = true;
+			}
+		}
+
+		if (!flag)
+		{
+			break;
+		}
+	}
 }
 
 struct Student {
@@ -121,7 +143,6 @@ Group createGroup(Group group) {
 	int count;
 	std::cin >> count;
 
-	Group group;
 	for (size_t i = 0; i < count; i++)
 	{
 		Student student;
@@ -140,6 +161,8 @@ Group createGroup(Group group) {
 	}
 
 	group.averageGrade = gradesSum / group.students.size();
+
+	return group;
 }
 
 int getScholarshipsCount(Group group, int minGrade) {
@@ -168,6 +191,8 @@ std::vector<Student> getEligibleStudents(Group group, int minGrade) {
 	bubbleSort(group.students, [](const Student& first, const Student& second) {
 		return first.facultyNum < second.facultyNum;
 	});
+
+	return eligibleStudents;
 }
 
 bool findStudent(Group group, std::string& facultyNumber) {
@@ -194,28 +219,6 @@ bool findStudent(Group group, std::string& facultyNumber) {
 	}
 
 	return false;
-}
-
-template <typename T, typename Comparator>
-void bubbleSort(std::vector<T>& vector, Comparator comparator) {
-
-	for (size_t i = 0; i < vector.size(); i++)
-	{
-		bool flag = false;
-		for (size_t j = 0; j < vector.size() - i - 1; j++)
-		{
-			if (comparator(vector[j] < vector[j + 1]))
-			{
-				std::swap(vector[j], vector[j+1]);
-				flag = true;
-			}
-		}
-
-		if (!flag)
-		{
-			break;
-		}
-	}
 }
 
 struct Point {
