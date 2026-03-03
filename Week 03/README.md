@@ -1,3 +1,205 @@
+
+### Теория - какво ще се изпечата?
+
+```cpp
+#include <iostream>
+
+class A
+{
+public:
+	A()
+	{
+		std::cout << "A()" << std::endl;
+	}
+
+	~A()
+	{
+		std::cout << "~A()" << std::endl;
+	}
+};
+
+class B
+{
+public:
+	B()
+	{
+		std::cout << "B()" << std::endl;
+	}
+
+	~B()
+	{
+		std::cout << "~B()" << std::endl;
+	}
+};
+
+class X
+{
+private:
+	A* obj1;
+	B& obj2;
+
+public:
+	X(const A& a, B& b) : obj2(b)
+	{
+		obj1 = new A();
+		std::cout << "X()" << std::endl;
+	}
+
+	~X()
+	{
+		delete obj1;
+		std::cout << "~X()" << std::endl;
+	}
+};
+
+int main()
+{
+	A obj1;
+	B obj2;
+
+	X obj(obj1, obj2);
+}
+```
+
+```cpp
+#include <iostream>
+
+class A
+{
+public:
+	A()
+	{
+		std::cout << "A()" << std::endl;
+	}
+
+	A(const A& other)
+	{
+		std::cout << "K.K A()" << std::endl;
+	}
+
+	~A()
+	{
+		std::cout << "~A()" << std::endl;
+	}
+};
+
+class B
+{
+public:
+	B()
+	{
+		std::cout << "B()" << std::endl;
+	}
+
+	B(const B& other)
+	{
+		std::cout << "K.K B()" << std::endl;
+	}
+
+	~B()
+	{
+		std::cout << "~B()" << std::endl;
+	}
+};
+
+class X
+{
+private:
+	A* obj1;
+	B obj2;
+
+public:
+	X(const A& a, B& b) : obj2(b)
+	{
+		obj1 = new A(a);
+		std::cout << "X()" << std::endl;
+	}
+
+	~X()
+	{
+		delete obj1;
+		std::cout << "~X()" << std::endl;
+	}
+};
+
+int main()
+{
+	A obj1;
+	B obj2;
+
+	X obj(obj1, obj2);
+}
+```
+
+```cpp
+#include <iostream>
+
+class A
+{
+public:
+	A()
+	{
+		std::cout << "A()" << std::endl;
+	}
+
+	A(const A& other)
+	{
+		std::cout << "K.K A()" << std::endl;
+	}
+
+	~A()
+	{
+		std::cout << "~A()" << std::endl;
+	}
+};
+
+class B
+{
+public:
+	B()
+	{
+		std::cout << "B()" << std::endl;
+	}
+
+	B(const B& other)
+	{
+		std::cout << "K.K B()" << std::endl;
+	}
+
+	~B()
+	{
+		std::cout << "~B()" << std::endl;
+	}
+};
+
+class X
+{
+private:
+	A* obj1;
+	B& obj2;
+
+public:
+	X(const A& a, B* b) : obj1(new A(a)), obj2(*b)
+	{
+		std::cout << "X()" << std::endl;
+	}
+
+	~X()
+	{
+		delete obj1;
+		std::cout << "~X()" << std::endl;
+	}
+};
+
+int main()
+{
+	A obj1;
+	B obj2;
+
+	X obj(obj1, &obj2);
+}
+```
+
 ### Задача 1
 Създайте клас `Book`, който показва различните видове конструктори и кога се извикват.  
 
