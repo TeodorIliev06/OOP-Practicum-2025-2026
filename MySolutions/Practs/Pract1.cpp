@@ -129,7 +129,7 @@ void bubbleSort(std::vector<T>& vector, Comparator comparator) {
 
 struct Student {
 	std::string facultyNum;
-	std::string name;
+	std::string name_;
 	double grade;
 	Major major;
 };
@@ -147,7 +147,7 @@ Group createGroup(Group group) {
 	{
 		Student student;
 		std::string majorString;
-		std::cin >> student.facultyNum >> student.name >> student.grade >> majorString;
+		std::cin >> student.facultyNum >> student.name_ >> student.grade >> majorString;
 
 		student.major = parseMajor(majorString);
 
