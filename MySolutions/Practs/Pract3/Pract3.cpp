@@ -96,6 +96,87 @@ public:
     }
 };
 
+class LinkedList {
+    struct Node {
+        int data;
+        Node* next;
+
+        Node() : data(0), next(nullptr) {}
+        Node(int data) : data(data), next(nullptr) {}
+    };
+
+    Node* head_;
+
+    void copyFrom(const LinkedList& source) {
+        if (source.head_ == nullptr) {
+            head_ = nullptr;
+            return;
+        }
+
+        head_ = new Node(source.head_->data);
+        Node* lastCopied = head_;
+        Node* sourceNode = source.head_->next;
+        while (sourceNode != nullptr) {
+            lastCopied->next = new Node(sourceNode->data);
+            lastCopied = lastCopied->next;
+            sourceNode = sourceNode->next;
+        }
+    }
+
+    void free() {
+        Node* current = head_;
+        while (current != nullptr) {
+            Node* next = current->next;
+            delete current;
+            current = next;
+        }
+        head_ = nullptr;
+    }
+public:
+    LinkedList() : head_(nullptr) {}
+    LinkedList(const LinkedList& list) {
+        copyFrom(list);
+    }
+
+    ~LinkedList() {
+        free();
+    };
+
+    LinkedList& pushFront(int data) {
+        Node* newNode = new Node(data);
+        newNode->next = head_;
+        head_ = newNode;
+
+        return *this;
+    }
+
+    LinkedList& pushBack(int data) {
+        if (head_ == nullptr)
+        {
+            head_ = new Node(data);
+            return *this;
+        }
+
+        Node* tail = head_;
+        while (tail->next != nullptr)
+        {
+            tail = tail->next;
+        }
+
+        tail->next = new Node(data);
+        return *this;
+    }
+
+    void print() {
+        Node* current = head_;
+        while (current != nullptr) {
+            std::print("{} ", current->data);
+            current = current->next;
+        }
+        std::print("\n");
+    }
+};
+
 int main()
 {
     // 1
@@ -113,4 +194,9 @@ int main()
         .build();
 
     ch.printStats();*/
+
+    // 3
+    LinkedList list = LinkedList();
+    list.pushBack(1).pushBack(2).pushFront(3);
+    list.print();
 }
