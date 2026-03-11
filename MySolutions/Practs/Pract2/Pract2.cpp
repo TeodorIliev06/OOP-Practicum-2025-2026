@@ -46,7 +46,7 @@ private:
     double balance_;
 
 public:
-    //BankAccount() : accountNumber_()
+    BankAccount() : accountNumber_() {}
 
     void deposit(double amount) {
         if (amount <= 0)
@@ -55,17 +55,17 @@ public:
             return;
         }
 
-        this->balance += amount;
+        this->balance_ += amount;
     }
 
     void withdraw(double amount) {
-        if (this->balance < amount)
+        if (this->balance_ < amount)
         {
-            std::cout << "Please enter an amount less or equal than " << this->balance;
+            std::cout << "Please enter an amount less or equal than " << this->balance_;
             return;
         }
 
-        this->balance -= amount;
+        this->balance_ -= amount;
     }
 
     void exportStatement(const std::string& fileName) const {
@@ -76,9 +76,9 @@ public:
             std::cout << "Can not open this file!" << std::endl;
         }
 
-        out << "Account holder: " << this->ownerName << std::endl;
-        out << "Account number: " << this->accountNumber << std::endl;
-        out << "Current balance: " << this->balance << " EUR" << std::endl;
+        out << "Account holder: " << this->ownerName_ << std::endl;
+        out << "Account number: " << this->accountNumber_ << std::endl;
+        out << "Current balance: " << this->balance_ << " EUR" << std::endl;
     }
 };
 
