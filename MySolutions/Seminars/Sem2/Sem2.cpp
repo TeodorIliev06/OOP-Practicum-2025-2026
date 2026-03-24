@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <print>
 
 class Point {
 private:
@@ -35,6 +36,9 @@ public:
     Point(int x, int y) : x_(x), y_(y) { 
         counter_++;
     }
+    ~Point() { 
+		std::print("Point at (%d, %d) is being destroyed.\n", x_, y_);
+	}
 
     int getX() const {
 		counter_++;
@@ -129,56 +133,52 @@ public:
 
 class Triangle {
 private:
-    Point a_;
-    Point b_;
-	Point c_;
+	mutable int counter_;
+    Point points_[3];
 
 public:
-    const Point& getA() const { return a_; }
-	const Point& getB() const { return b_; }
-	const Point& getC() const { return c_; }
+    const Point& getA() const { return points_[0]; }
+	const Point& getB() const { return points_[1]; }
+	const Point& getC() const { return points_[2]; }
 
-	void setA(const Point& a) { a_ = a; }
-	void setA(int x, int y) { a_ = Point(x, y); }
+	void setA(const Point& a) { points_[0] = a; }
+	void setA(int x, int y) { points_[0] = Point(x, y); }
 
-	void setB(const Point& b) { b_ = b; }
-	void setC(const Point& c) { c_ = c; }
+	void setB(const Point& b) { points_[1] = b; }
+	void setC(const Point& c) { points_[2] = c; }
 
-    Triangle(const Point& a, const Point& b, const Point& c) : a_(a), b_(b), c_(c) {}
+    Triangle() = default;
+
+    Triangle(const Point& a, const Point& b, const Point& c) {
+        points_[0] = a;
+        points_[1] = b;
+        points_[2] = c;
+    }
 
     double getSide(const Point& a, const Point& b) const {
 		return a.calculateDistance(b);
     }
 
     double calculatePerimeter() const {
-        double sideA = getSide(b_,c_);
-		double sideB = getSide(a_, c_);
-		double sideC = getSide(a_, b_);
+        double sideA = getSide(points_[1], points_[2]);
+		double sideB = getSide(points_[0], points_[2]);
+		double sideC = getSide(points_[0], points_[1]);
 
         return sideA + sideB + sideC;
     }
 
     double calculateArea() const {
-        // Calculating area with Heron's formula
-        /*double sideA = getSide(b_, c_);
-        double sideB = getSide(a_, c_);
-        double sideC = getSide(a_, b_);
-
-        double halfPerimeter = (sideA + sideB + sideC) / 2.0;
-
-        return sqrt(halfPerimeter * (halfPerimeter - sideA) * (halfPerimeter - sideB) * (halfPerimeter - sideC));*/
-
-		int x1 = a_.getX(), y1 = a_.getY();
-        int x2 = b_.getX(), y2 = b_.getY();
-        int x3 = c_.getX(), y3 = c_.getY();
+		int x1 = points_[0].getX(), y1 = points_[0].getY();
+        int x2 = points_[1].getX(), y2 = points_[1].getY();
+        int x3 = points_[2].getX(), y3 = points_[2].getY();
 
 		double doubledArea = x1 * (y2 - y3) + x2 * (y3 - y1) + x3 * (y1 - y2);
 		return doubledArea / 2;
 	}
 
     Point::Quadrant getCenterPosition() const {
-        double centerX = (a_.getX() + b_.getX() + c_.getX()) / 3.0;
-        double centerY = (a_.getY() + b_.getY() + c_.getY()) / 3.0;
+        double centerX = (points_[0].getX() + points_[1].getX() + points_[2].getX()) / 3.0;
+        double centerY = (points_[0].getY() + points_[1].getY() + points_[2].getY()) / 3.0;
 
         return Point(static_cast<int>(centerX), static_cast<int>(centerY)).getQuadrant();
 	}
