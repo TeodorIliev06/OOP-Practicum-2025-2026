@@ -17,7 +17,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Seminars", "Seminars", "{A4
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Pract4", "Practs\Pract4\Pract4.vcxproj", "{7F27A204-8337-4176-A04A-A2503F95BC36}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Sem4", "Sem4\Sem4.vcxproj", "{166525AF-CE8D-41B5-9785-3126EEDD4F9A}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Sem4", "Seminars\Sem4\Sem4.vcxproj", "{166525AF-CE8D-41B5-9785-3126EEDD4F9A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
