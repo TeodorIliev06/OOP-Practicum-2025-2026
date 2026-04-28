@@ -12,6 +12,7 @@ private:
 	void copyFrom(const Container& other);
 	void moveFrom(Container&& other) noexcept;
 public:
+	Container() = default;
 	Container(const Container& other);
 	Container(Container&& other) noexcept;
 

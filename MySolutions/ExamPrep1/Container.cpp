@@ -33,6 +33,11 @@ void Container::moveFrom(Container&& other) noexcept
 	other.tax_ = 0;
 }
 
+Container::Container()
+	: entries_(nullptr), size_(0), cap_(0), tax_(0)
+{
+}
+
 Container::Container(const Container& other)
 {
 	copyFrom(other);
@@ -132,7 +137,7 @@ std::istream& operator>>(std::istream& is, Container& c)
 	return is;
 }
 
-explicit Container::operator bool() const {
+Container::operator bool() const {
 	double occupied = (double)size_ / cap_;
 	return occupied >= 0.6;
 }
