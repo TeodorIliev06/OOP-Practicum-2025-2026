@@ -59,15 +59,15 @@ void BankAccount::withdraw(double amount)
 	balance_ -= amount;
 }
 
-void BankAccount::transfer(BankAccount& dest, double amount)
-{
-	if (this == dest)
-	{
-
-	}
-
-	if (this->isFrozen_ || dest.isFrozen_)
-	{
-		throw AccountFrozenException(this->accountNumber_);
-	}
-}
+//void BankAccount::transfer(BankAccount& dest, double amount)
+//{
+//	if (this == dest)
+//	{
+//
+//	}
+//
+//	if (this->isFrozen_ || dest.isFrozen_)
+//	{
+//		throw AccountFrozenException(this->accountNumber_);
+//	}
+//}

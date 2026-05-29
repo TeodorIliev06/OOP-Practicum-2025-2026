@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\Requirements">
+      <UniqueIdentifier>{0c59c654-d437-4784-a73c-769996b3f718}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Pract14.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MinCreditsRequirement.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Student.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TakenCoursesByNameRequirement.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MinCoursesTakenByCategoryRequirement.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Course.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MinCreditsFromCoursesRequirement.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MinAverageGradeRequirement.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PredicateRequirement.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AdmissionService.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AdmissionResult.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StudentSystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Student.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Course.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IAdmissionRequirement.h">
+      <Filter>Header Files\Requirements</Filter>
+    </ClInclude>
+    <ClInclude Include="MinCreditsRequirement.h">
+      <Filter>Header Files\Requirements</Filter>
+    </ClInclude>
+    <ClInclude Include="TakenCoursesByNameRequirement.h">
+      <Filter>Header Files\Requirements</Filter>
+    </ClInclude>
+    <ClInclude Include="MinCoursesTakenByCategoryRequirement.h">
+      <Filter>Header Files\Requirements</Filter>
+    </ClInclude>
+    <ClInclude Include="MinCreditsFromCoursesRequirement.h">
+      <Filter>Header Files\Requirements</Filter>
+    </ClInclude>
+    <ClInclude Include="MinAverageGradeRequirement.h">
+      <Filter>Header Files\Requirements</Filter>
+    </ClInclude>
+    <ClInclude Include="PredicateRequirement.h">
+      <Filter>Header Files\Requirements</Filter>
+    </ClInclude>
+    <ClInclude Include="AdmissionService.h">
+      <Filter>Header Files\Requirements</Filter>
+    </ClInclude>
+    <ClInclude Include="AdmissionResult.h">
+      <Filter>Header Files\Requirements</Filter>
+    </ClInclude>
+    <ClInclude Include="StudentSystem.h">
+      <Filter>Header Files\Requirements</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
