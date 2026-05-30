@@ -1,5 +1,33 @@
 #include "VoughtRecruitmentSystem.h"
 
+void VoughtRecruitmentSystem::free() {
+	this->criterias.clear();
+}
+
+void VoughtRecruitmentSystem::copyFrom(const VoughtRecruitmentSystem& other)
+{
+	for (const auto& criteria : other.criterias) {
+		this->criterias.push_back(criteria->clone());
+	}
+}
+
+VoughtRecruitmentSystem::VoughtRecruitmentSystem(const VoughtRecruitmentSystem& other)
+{
+	copyFrom(other);
+}
+
+VoughtRecruitmentSystem& VoughtRecruitmentSystem::operator=(const VoughtRecruitmentSystem& other)
+{
+	if (this!= &other)
+	{
+		free();
+		copyFrom(other);
+	}
+
+	return *this;
+}
+
+
 void VoughtRecruitmentSystem::addCriteria(const ICriteria* criteria)
 {
 	this->criterias.push_back(criteria->clone());

@@ -125,15 +125,28 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
+    <ClCompile Include="CriteriaFactory.cpp" />
     <ClCompile Include="ExamPrepK2_1.cpp" />
+    <ClCompile Include="MaxContractCriteria.cpp" />
+    <ClCompile Include="MinAgeCriteria.cpp" />
     <ClCompile Include="MinDosageCriteria.cpp" />
     <ClCompile Include="RequiredPowerCriteria.cpp" />
+    <ClCompile Include="RosterCollection.cpp" />
+    <ClCompile Include="SubmissionResult.cpp" />
+    <ClCompile Include="VoughtRecruitmentSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h" />
+    <ClInclude Include="Collection.hpp" />
+    <ClInclude Include="CriteriaFactory.h" />
     <ClInclude Include="ICriteria.h" />
+    <ClInclude Include="MaxContractCriteria.h" />
+    <ClInclude Include="MinAgeCriteria.h" />
     <ClInclude Include="MinDosageCriteria.h" />
     <ClInclude Include="RequiredPowerCriteria.h" />
+    <ClInclude Include="RosterCollection.h" />
+    <ClInclude Include="SubmissionResult.h" />
+    <ClInclude Include="VoughtRecruitmentSystem.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
