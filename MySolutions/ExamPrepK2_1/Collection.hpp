@@ -1,6 +1,7 @@
 #include <vector>
 #include <functional>
 #include <optional>
+
 template <typename T>
 class Collection {
 protected:
